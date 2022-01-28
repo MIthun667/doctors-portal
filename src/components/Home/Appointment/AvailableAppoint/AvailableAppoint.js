@@ -46,7 +46,7 @@ export default function AvailableAppoint({date}) {
     <Container>
         <Typography sx={{
                 mb: 2,
-                color: 'info.main',
+                color: '#19D3AE',
                 fontWeight: 400,
                 textAlign: 'center'
                 }} variant='h3'>
@@ -57,6 +57,7 @@ export default function AvailableAppoint({date}) {
               bookings.map(booking=> <Booking
               key={booking.id}
               booking={booking}
+              date={date}
               ></Booking>)
           }
         </Grid>

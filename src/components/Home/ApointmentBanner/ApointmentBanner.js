@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import doctor from '../../../images/doctor.png';
 import appointment from '../../../images/appointment-bg.png';
-import { Button, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 
 const appointmentBg = {
     background: `url(${appointment})`,
@@ -14,16 +14,16 @@ const appointmentBg = {
 
 function ApointmentBanner() {
   return(
-    <Box style={appointmentBg} sx={{ flexGrow: 1 }}>
+    <Container>
+      <Box style={appointmentBg} sx={{ flexGrow: 1 }}>
     <Grid container spacing={2}>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={6}>
           <img 
           style={{width: 400,
             marginTop: '-110px',
-            marginLeft:300
           }}src={doctor} alt=""/>
       </Grid>
-      <Grid item xs={12} md={8} sx={{
+      <Grid item xs={12} md={6} sx={{
          display: 'flex',
          justifyContent: 'flex-start',
          textAlign: 'left' ,
@@ -44,6 +44,7 @@ function ApointmentBanner() {
       </Grid>
     </Grid>
   </Box>
+    </Container>
   )
 }
 

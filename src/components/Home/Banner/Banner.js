@@ -38,7 +38,7 @@ function Banner() {
           <img style={{width: '450px'}} src={chair} alt="" />
         </Grid>
       </Grid>
-    </Container>
+      </Container>
   );
 }
 
