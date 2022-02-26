@@ -1,75 +1,36 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import doctor from '../../../images/doctor-small.png';
-import Typography from '@mui/material/Typography';
-import { Container } from '@mui/material';
-import { Box } from '@mui/system';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-export default function Doctors() {
+import React from 'react';
+import doctor1 from '../../../images/doctor-small.png';
+import { Box, Container, Grid, Typography } from '@mui/material';
+import Doctor from './Doctor';
+
+
+
+const doctors = 
+{
+        name: 'D. Caudi',
+        phone: '+99667741250',
+        img: doctor1
+
+}
+const Doctors = () => {
   return (
     <Container>
-        <Typography variant='h4' sx={{
-            color: '#5ce7ed', 
-            fontWeight: 500,
-            textAlign: 'center',
-            mb: 3
-            }}>Our Doctors</Typography>
-        <Box sx={{ 
-            display: 'flex',
-            justifyContent: "center",
-         }}>
-        <Card sx={{ maxWidth: 345, boxShadow: 0 }}>
-            <CardMedia
-                component="img"
-                height=""
-                image={doctor}
-                alt=""
-            />
-            <CardContent sx={{}}>
-            <Typography sx={{textAlign: 'center'}} gutterBottom variant="h6" component="div">
-                     Dr. Caudi
+            <Box sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="div" sx={{ fontWeight: 400, textAlign: 'center', m: 4 }}>
+                    OUR DOCTORS
                 </Typography>
-                <Typography sx={{textAlign: 'center'}} gutterBottom variant="subtitle1" component="div">
-                     <FontAwesomeIcon icon='coffee' />017595636696
-                </Typography>
-            </CardContent>
-        </Card>
-        <Card sx={{ maxWidth: 345, boxShadow: 0, ml: 2, mr:2 }}>
-            <CardMedia
-                component="img"
-                height=""
-                image={doctor}
-                alt=""
-            />
-            <CardContent sx={{}}>
-            <Typography sx={{textAlign: 'center'}} gutterBottom variant="h6" component="div">
-                     Dr. Caudi
-                </Typography>
-                <Typography sx={{textAlign: 'center'}} gutterBottom variant="h6" component="div">
-                     Dr. Caudi
-                </Typography>
-            </CardContent>
-        </Card>
-        <Card sx={{ maxWidth: 345, boxShadow: 0 }}>
-            <CardMedia
-                component="img"
-                height=""
-                image={doctor}
-                alt=""
-            />
-            <CardContent sx={{justifyContent: 'center'}}>
-                <Typography sx={{textAlign: 'center'}} gutterBottom variant="h6" component="div">
-                     Dr. Caudi
-                </Typography>
-            </CardContent>
-            
-        </Card>
-        </Box>
-        
-    </Container>
-  );
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    {
+                        doctors.map(doctor => <Doctor
+                            key={doctor.name}
+                            doctor={doctor}
+                        ></Doctor>)
+                    }
+                </Grid>
+            </Box>
+        </Container>
+  )
 }
+
+export default Doctors;

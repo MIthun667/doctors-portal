@@ -1,16 +1,14 @@
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import './service.css';
+
+const Doctor = ({name, phone, img}) => {
 
 
-function Service(props) {
-  const { name, description, img } = props.service;
-  return (
-    <Grid item xs={4} sm={4} md={4}>
+    return (
+        <Grid item xs={4} sm={4} md={4}>
       <Card sx={{ minWidth: 275, border: 0, boxShadow: 0, textAlign: 'center' }}>
         <CardMedia
           style={{ width: 'auto', height: '80px', margin: '0 auto' }}
@@ -23,12 +21,12 @@ function Service(props) {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {description}
+            {phone}
           </Typography>
         </CardContent>
       </Card>
     </Grid>
-  );
-};
+    )
+}
 
-export default Service;
+export default Doctor;

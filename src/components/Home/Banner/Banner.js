@@ -5,6 +5,7 @@ import bg from '../../../images/bg.png';
 import { Button, Typography, Container } from '@mui/material';
 import './Banner.css'
 import { Box } from '@mui/system';
+import { NavLink } from 'react-router-dom';
 
 const bannerBg = {
   background: `url(${bg})`,
@@ -31,7 +32,9 @@ function Banner() {
             Eaque doloribus ducimus porro repudiandae suscipit non eligendi 
             sequi illo consequuntur nemo! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing.
           </Typography>
-          <Button variant='contained'  style={{backgroundColor: '#5ce7ed'}}>Get Appointment</Button>
+          <NavLink to={'/appointment'}>
+         <button className='btn btn-outline-dark'>Get Appointment</button>
+          </NavLink>
           </Box>
         </Grid>
         <Grid item xs={12} md={6} style={verticalCenter}>

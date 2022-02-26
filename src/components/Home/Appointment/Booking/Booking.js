@@ -16,7 +16,7 @@ export default function Booking({booking, date}) {
     <Grid item sx={{my: 2}} xs={12} sm={6} md={4}>
         <Paper elevation={3} sx={{py: 5}}>
             <Typography sx={{ 
-                color: '#19D3AE',
+                color: 'dark',
                 fontWeight: 600,
                 textAlign: 'center'
                 }} variant="h5" gutterBottom component="div">
@@ -37,13 +37,7 @@ export default function Booking({booking, date}) {
                 {space} Spaces Available
             </Typography>
             <Box sx={{textAlign: 'center'}}>
-                <Button style={{
-              color: 'white',
-              textDecoration: 'none',
-              background: '#19D3AE',
-              borderRadius: '5px'
-
-            }} onClick={handleBookingOpen} variant='contained'>Book Appoinment</Button>
+                <button className='btn btn-outline-dark' onClick={handleBookingOpen}>Book Appoinment</button>
             </Box>
             
         </Paper>

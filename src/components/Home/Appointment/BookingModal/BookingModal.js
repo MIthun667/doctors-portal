@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
+import useAuth from '../../../../Hooks/useAuth';
 
 
 const style = {
@@ -15,84 +16,112 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 500,
   bgcolor: 'background.paper',
-  border: '2px solid #19D3AE',
+  border: '2px solid dark',
   boxShadow: 5,
   p: 4,
 }
 
-export default function BookingModal({openBooking, handleBookingClose, booking, date}) {
-  const {name, time} = booking;
+export default function BookingModal({ openBooking, handleBookingClose, booking, date }) {
+  const { name, time } = booking;
+  const { user } = useAuth();
 
-  const handleBookingSubmit = e =>{
-    alert('Book Appoinment');
+  const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
+  const [bookingInfo, setBookingInfo] = useState(initialInfo);
+
+  const handleOnBlur = e => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newInfo = { ...bookingInfo };
+    newInfo[field] = value;
+    setBookingInfo(newInfo);
+  }
+
+  const handleBookingSubmit = e => {
+
     // collect data
+    const appointment = {
+      ...bookingInfo,
+      time,
+      serviceName: name,
+      date: date.toLocaleDateString()
+    }
     // send to the server
+    fetch('http://localhost:8000/appointments', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(appointment)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+
     handleBookingClose();
     e.preventDefault();
   }
 
   return (
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={openBooking}
-        onClose={handleBookingClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-        >
-        <Fade in={openBooking}>
-          <Box sx={style}>
-            <Typography style={{color: '#19D3AE', textAlign: 'center'}} id="transition-modal-title" variant="h6" component="h2">
-              {name}
-            </Typography>
-            <form onSubmit={handleBookingSubmit}>
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={openBooking}
+      onClose={handleBookingClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={openBooking}>
+        <Box sx={style}>
+          <Typography style={{ color: 'dark', textAlign: 'center' }} id="transition-modal-title" variant="h6" component="h2">
+            {name}
+          </Typography>
+          <form onSubmit={handleBookingSubmit}>
             <TextField
-              sx={{width: '100%', m: 1}}
+              sx={{ width: '100%', m: 1 }}
               disabled
               id="outlined-size-small"
               defaultValue={time}
               size="small"
             />
             <TextField
-              sx={{width: '100%', m: 1}}
-              type={'name'}
+              sx={{ width: '100%', m: 1 }}
               id="outlined-size-small"
-              defaultValue='Your Name'
+              onBlur={handleOnBlur}
+              name='patientName'
+              defaultValue={user.displayName}
               size="small"
             />
             <TextField
-              sx={{width: '100%', m: 1}}
+              sx={{ width: '100%', m: 1 }}
               id="outlined-size-small"
+              name='phone'
+              onBlur={handleOnBlur}
               defaultValue='Phone Number'
               size="small"
             />
             <TextField
-              sx={{width: '100%', m: 1}}
+              sx={{ width: '100%', m: 1 }}
               id="outlined-size-small"
-              defaultValue='Your Email'
+              name='email'
+              onBlur={handleOnBlur}
+              defaultValue={user.email}
               size="small"
             />
             <TextField
               disabled
-              sx={{width: '100%', m: 1}}
+              sx={{ width: '100%', m: 1 }}
               id="outlined-size-small"
               defaultValue={date.toDateString()}
               size="small"
             />
-            <Button style={{
-              color: 'white',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              background: '#19D3AE',
-              borderRadius: '5px'
-
-            }} type='Submit' variant='contained'>Book Appointment</Button>
-            </form>
-          </Box>
-        </Fade>
-      </Modal>
+            <button type='submit' className='btn btn-outline-dark text-center'>Book Appointment</button>
+          </form>
+        </Box>
+      </Fade>
+    </Modal>
   );
 }

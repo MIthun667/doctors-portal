@@ -1,0 +1,15 @@
+.btn {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 75%;
+    color: black;
+    background-color: white;
+    transition: all 0.5s ease;
+
+}
+
+.btn:hover{
+    color: white;
+    background: black;
+}

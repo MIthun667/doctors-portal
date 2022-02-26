@@ -27,26 +27,27 @@ const services = [
 ];
 
 function Services() {
-  return(
-      <Box sx={{ flexGrow: 1 }}>
-          <Container>
-            <Typography variant="h6" component="div" sx={{ fontWeight: 400, textAlign: 'center', m: 4 }}>
-                OUR SERVICES
-            </Typography>
-            <Typography variant="h4" component="div" sx={{ fontWeight: 600, textAlign: 'center',  m: 4}}>
-                SERVICES WE PROVIDE
-            </Typography>
+    return (
+        <Container>
+            <Box sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="div" sx={{ fontWeight: 400, textAlign: 'center', m: 4 }}>
+                    OUR SERVICES
+                </Typography>
+                <Typography variant="h4" component="div" sx={{ fontWeight: 600, textAlign: 'center', m: 4 }}>
+                    SERVICES WE PROVIDE
+                </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
-                        services.map(service =><Service
-                             key={service.name}
-                             service={service}
+                        services.map(service => <Service
+                            key={service.name}
+                            service={service}
                         ></Service>)
                     }
                 </Grid>
-          </Container>
-    </Box>
-  )
+            </Box>
+        </Container>
+
+    )
 }
 
 export default Services;

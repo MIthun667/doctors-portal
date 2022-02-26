@@ -1,17 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import login from '../../../images/login.png'
-import { Container, Grid, Typography, TextField, Button, CircularProgress } from '@mui/material';
+import { Container, Grid, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 
 
 export default function Signup() {
     const [loginData, setLoginData] = useState({})
+    const history = useHistory()
+    const {user, registerUser , isLoading, authError} = useAuth();
 
-    const {user, registerUser , isLoading} = useAuth();
-
-    const handleOnChange = e =>{
+    const handleOnBlur = e =>{
         const field = e.target.name;
         const value = e.target.value
         const newLoginData = {...loginData};
@@ -23,7 +23,7 @@ export default function Signup() {
         if(loginData.password !== loginData.password2){
             alert("Your password didn't match");
         }
-        registerUser(loginData.email, loginData.password);
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         e.preventDeafult();
     }
   return (
@@ -42,10 +42,9 @@ export default function Signup() {
                   m: 1
               }}
                   id="standard-basic" 
-                  label="Name" 
+                  label="Your Name" 
                   name= 'name'
-                  type={'name'}
-                  onChange={handleOnChange}
+                  onBlur={handleOnBlur}
                   variant="standard" />
               <TextField sx={{
                   width: '75%',
@@ -55,7 +54,7 @@ export default function Signup() {
                   label="Your Email" 
                   type={'email'}
                   name= 'email'
-                  onChange={handleOnChange}
+                  onBlur={handleOnBlur}
                   variant="standard" />
               <TextField sx={{
                   width: '75%',
@@ -65,7 +64,7 @@ export default function Signup() {
                   label="Password" 
                   type= "password"
                   name= 'password'
-                  onChange={handleOnChange}
+                  onBlur={handleOnBlur}
                   variant="standard" />
               <TextField sx={{
                   width: '75%',
@@ -75,7 +74,7 @@ export default function Signup() {
                   label="Confirm Password" 
                   type= "password"
                   name= 'password2'
-                  onChange={handleOnChange}
+                  onBlur={handleOnBlur}
                   variant="standard" />
                   <NavLink 
                   style={{
@@ -88,12 +87,20 @@ export default function Signup() {
                           textAlign: 'center'}} variant='text'>Already Register? please Login</Button>
                   </NavLink>
                   <Button  sx={{
-                      backgroundColor: '#19D3AE',
-                      width: '75%', 
-                      m: 1
-                      }} variant='contained' type='submit'>Register</Button>
+                      ml: 1,
+                      mb: 2,
+                      width: '75%',
+                      background: "#19D3AE",
+                      color: 'black'
+                      }} variant='text' type='submit'>Register</Button>
             </form>}
             {isLoading && <CircularProgress />}
+            {user?.email && <Alert sx={{
+                width: '75%',
+                ml: 1,
+                mt: 2
+            }} severity="success">User Created Successfully!</Alert>}
+            {authError && <Alert severity='error'>{authError}</Alert>}
         </Grid>
         <Grid xs={12} md={6}>
             <img style={{width: '100%'}} src={login} alt="" />

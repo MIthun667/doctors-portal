@@ -1,67 +1,48 @@
+import { Button, Container } from '@mui/material';
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
-import { Container } from '@mui/material';
 
 function Navigation() {
-  const {user, logOut} = useAuth();
-    return(
-        <Container>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar>
-                <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}>
-                <MenuIcon />
-              </IconButton>
-              <Typography style={{color: 'White', textAlign: "center"}}
-               variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                 Doctors Portal
-              </Typography>
-              <Link style={{
-                   m: 2 ,
-                   color: 'white',
-                   textDecoration: 'none',
-                   background: '#19D3AE',
-                   borderRadius: '5px'
-                  }} to={'/appointment'}>
-                  <Button sx={{}}color="inherit">Appointment</Button>
-              </Link>
-                {
-                 user?.email ?
-                 <Button style={{
-                  color: 'white',
-                   textDecoration: 'none',
-                   background: '#19D3AE',
-                   borderRadius: '5px'
- 
-                  }} onClick={logOut} color="inherit">Log Out</Button>
-                 :
-                <NavLink style={{
-                 color: 'white',
-                  textDecoration: 'none',
-                  background: '#19D3AE',
-                  borderRadius: '5px'
-
-                 }} to={'/login'}>
-                    <Button color="inherit">Login</Button>
-                </NavLink> 
-                 }
-               </Toolbar>
-            </AppBar>
-         </Box>
-       </Container>
-    );
+  const { user, logOut } = useAuth();
+  return (
+    <Container>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul className="navbar-nav my-2">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/home">Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="#">About</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="#">Dental service</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="#">Reviews</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="#">Contact Us</a>
+              </li>
+              {
+                    user?.email ?
+                    <button className='btn btn-outline-dark' onClick={logOut}>Log Out</button>
+                    :
+                   <NavLink style={{
+                    color: 'white',
+                     textDecoration: 'none',
+                     borderRadius: '5px'
+                    }} to={'/login'}>
+                       <button className='btn btn-outline-dark'>Login</button>
+                   </NavLink> 
+                    }
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </Container>
+  );
 };
 export default Navigation;
