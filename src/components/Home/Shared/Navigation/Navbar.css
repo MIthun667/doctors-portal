@@ -1,0 +1,13 @@
+.nav a{
+    text-decoration: none;
+    color: darkblue;
+    margin: 0.5rem ;
+}
+.navigation{
+        display: 'flex';
+        position: 'fixed';
+        margin-top: 3;
+        align-items: 'center';
+        z-index: 1;
+
+}

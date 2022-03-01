@@ -1,0 +1,19 @@
+.info{
+    margin-left: 20px;
+}
+.infos{
+    color: #1CC7C1;
+    padding: .5rem ;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem;
+    background-color: #3A4256;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 5px 5px solid gray;
+}
+
+.icons{
+    margin-top: 12px;
+}

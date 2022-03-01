@@ -8,7 +8,7 @@ import people2 from '../../../images/people-2.png';
 import people3 from '../../../images/people-3.png';
 import { Box } from '@mui/system';
 
-export default function Testimonail(props) {
+export default function Testimonail() {
   return (
     <Container sx={{my: 5}}>
           <Typography variant='h6' sx={{color: '#5ce7ed', fontWeight: 400}}>

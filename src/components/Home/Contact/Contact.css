@@ -1,5 +1,38 @@
+
 .contact{
+    margin-top: 2;
+    text-align: center;   
+}
+.contact h6{
+    color: #5FC7C7;
+    padding-top: 2rem;
+}
+.contact h2{
+    color: white;
+}
+.form{
     align-items: center;
     justify-content: center;
-    
+}
+.email{
+    margin-top: 2rem;
+    border: none;
+    background-color: white;
+    width: 67%;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-in;
+}
+
+.subject{
+    width: 67%;
+    margin-bottom: 1rem;
+}
+.message{
+    width: 67%;
+    margin-bottom: 2rem;
+}
+
+.button{
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
 }

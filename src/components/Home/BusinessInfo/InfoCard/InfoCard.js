@@ -1,42 +1,22 @@
-import { Container } from '@mui/material';
-import React from 'react';
-import BusinessInfo from '../BusinessInfo';
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Info.css'
 
 
-const infosData = [
-    {
-        id: 1,
-        title: 'Opening Hours',
-        description: 'We are open 24/7',
-        background: 'primary',
-    },
-    {
-        id: 2,
-        title: 'Visit Our Location',
-        description: 'Dhaka-1216, Bangladesh',
-        background: 'dark',
-    },
-    {
-        id: 3,
-        title: 'Call us now',
-        description: '+880177777776',
-        background: 'primary',
-    }
-]
-
-function InfoCard() {
+const InfoCard = ({info}) => {
   return (
-      <Container>
-          <Grid container spacing={2}>
-          {
-              infosData.map(booking=> <BusinessInfo
-              key={info.is}
-              info={info}
-              ></BusinessInfo>)
-          }
-        </Grid>
-      </Container>
+    <div className='col-md-4'>
+            <div className='infos'>
+                <div className='icons'>
+                    <FontAwesomeIcon className='info-icon' icon={info.icon}></FontAwesomeIcon>
+                </div>
+                <div className='info'>
+                    <h6>{info.title}</h6>
+                    <small>{info.description}</small>
+                </div>
+            </div>
+        </div>
   )
 }
 
-export default InfoCard;
+export default InfoCard

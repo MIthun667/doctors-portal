@@ -7,12 +7,12 @@ import Doctor from './Doctor';
 
 
 const doctors = 
-{
+[{
         name: 'D. Caudi',
         phone: '+99667741250',
         img: doctor1
 
-}
+}]
 const Doctors = () => {
   return (
     <Container>

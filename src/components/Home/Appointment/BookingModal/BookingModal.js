@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import useAuth from '../../../../Hooks/useAuth';
-
+import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -37,7 +37,8 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
   }
 
   const handleBookingSubmit = e => {
-
+    handleBookingClose();
+    e.preventDefault();
     // collect data
     const appointment = {
       ...bookingInfo,
@@ -46,20 +47,13 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
       date: date.toLocaleDateString()
     }
     // send to the server
-    fetch('http://localhost:8000/appointments', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(appointment)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+    axios.post("http://localhost:5000/appointments", appointment)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
       })
 
-    handleBookingClose();
-    e.preventDefault();
+    
   }
 
   return (

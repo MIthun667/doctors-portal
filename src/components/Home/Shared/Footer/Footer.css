@@ -1,0 +1,43 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+.empty{
+    padding-top: 2rem;
+    color: #848B9F;
+}
+
+.services{
+    padding-top: 1rem;
+    color: #848B9F;
+}
+
+.services h2{
+    color: #5FC7C7;
+}
+
+.health{
+    padding: 1rem;
+    color: #848B9F;
+}
+.health h2{
+    color: #5FC7C7;
+}
+.address{
+    padding: 1rem;
+    color: #848B9F;
+}
+.address h2{
+    color: #5FC7C7;
+}
+
+.call_Center{
+    padding: 1rem ;
+    border: 1px solid;
+    color: #FFFFFF;
+    background: #19D3AE;
+}
+.last p{
+    text-align: center;
+    color: #848B9F;
+}
