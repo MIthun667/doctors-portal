@@ -46,7 +46,7 @@ export default function AvailableAppoint({date}) {
     <Container>
         <Typography sx={{
                 mb: 2,
-                color: '#19D3AE',
+                color: '#848B9F',
                 fontWeight: 400,
                 textAlign: 'center'
                 }} variant='h3'>

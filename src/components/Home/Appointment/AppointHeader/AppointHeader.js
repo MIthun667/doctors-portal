@@ -6,7 +6,7 @@ import Calender from '../../Shared/Calender/Calender';
 function AppointHeader({date, setDate}) {
     
   return (
-    <Container sx={{my: 2}}>
+    <Container sx={{my: 4}}>
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
                 <Calender date={date} setDate={setDate}></Calender>

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import doctor from '../../../images/doctor.png';
 import appointment from '../../../images/appointment-bg.png';
-import { Button, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 const appointmentBg = {
   background: `url(${appointment})`,

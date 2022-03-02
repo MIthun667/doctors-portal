@@ -16,7 +16,7 @@ export default function Booking({booking, date}) {
     <Grid item sx={{my: 2}} xs={12} sm={6} md={4}>
         <Paper elevation={3} sx={{py: 5}}>
             <Typography sx={{ 
-                color: 'dark',
+                color: '#848B9F',
                 fontWeight: 600,
                 textAlign: 'center'
                 }} variant="h5" gutterBottom component="div">
