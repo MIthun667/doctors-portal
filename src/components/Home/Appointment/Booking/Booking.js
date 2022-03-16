@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import BookingModal from '../BookingModal/BookingModal';
 
 
-export default function Booking({booking, date}) {
+export default function Booking({booking, date, setBookingSuccess}) {
     const {name, time, space} = booking;
     const [openBooking, setBookingOpen] = React.useState(false);
     const handleBookingOpen = () => setBookingOpen(true);
@@ -47,6 +47,7 @@ export default function Booking({booking, date}) {
     booking={booking}
     openBooking={openBooking}
     handleBookingClose={handleBookingClose}
+
     >
     </BookingModal>
     </>

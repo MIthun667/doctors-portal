@@ -4,7 +4,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
 import './Navbar.css';
-import Services from './../../Serviecs/Services';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 
@@ -14,31 +18,29 @@ function Navigation() {
 
   return (
     <Container>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light z-index-1">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">The Dental Health</a>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/home">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Dental Services</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">About</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Reviews</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Contact Us</a>
-              </li>
-            </ul>
-           
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" style={{
+                   boxShadow: 'none',
+                   backgroundColor: 'white',
+                   color: 'black'
+                  }}>
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Doctors Portal
+            </Typography>
             {
               user?.email ?
-                <button className='btn btn-outline-dark' onClick={logOut}>Log Out</button>
+                <Box>
+                  <NavLink style={{
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '5px'
+                  }} to={'/dashboard'}>
+                    <button className='btn btn-outline-dark'>Dashboard</button>
+                  </NavLink>
+
+                  <button className='btn btn-outline-dark' onClick={logOut}>Log Out</button>
+                </Box>
                 :
                 <NavLink style={{
                   color: 'white',
@@ -48,9 +50,9 @@ function Navigation() {
                   <button className='btn btn-outline-dark'>Login</button>
                 </NavLink>
             }
-          </div>
-        </div>
-      </nav>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </Container>
   );
 };

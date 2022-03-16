@@ -8,6 +8,7 @@ import Signup from './components/Login/Signup/Signup';
 import AuthProvider from './Contexts/AuthProvider/AuthProvider';
 import Contact from './components/Home/Contact/Contact';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 
 
 
@@ -19,6 +20,9 @@ const App = () => {
                     <Switch>
                         <PrivateRoute exact path="/appointment">
                             <Appointment />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/dashboard">
+                            <Dashboard />
                         </PrivateRoute>
                         <Route exact path="/home">
                             <Home />

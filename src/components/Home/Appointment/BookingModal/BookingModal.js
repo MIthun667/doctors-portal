@@ -20,7 +20,7 @@ const style = {
   p: 4,
 }
 
-export default function BookingModal({ openBooking, handleBookingClose, booking, date }) {
+export default function BookingModal({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) {
   const { name, time } = booking;
   const { user } = useAuth();
 
@@ -36,8 +36,8 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
   }
 
   const handleBookingSubmit = e => {
-    handleBookingClose();
     e.preventDefault();
+    handleBookingClose();
     // collect data
     const appointment = {
       ...bookingInfo,
@@ -51,6 +51,10 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
         console.log(res);
         console.log(res.data);
       })
+      .then(data => {
+        if(data){
+        }
+      });
 
     
   }

@@ -44,6 +44,10 @@ const Doctor = ({ doctor }) => {
               {doctor.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
+            <CallIcon sx={{
+                color: 'gray',
+                width: '15px'
+              }} />
               {doctor.phone}
             </Typography>
           </CardContent>
@@ -60,7 +64,10 @@ const Doctor = ({ doctor }) => {
               {doctor.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {doctor.CallIcon}
+            <CallIcon sx={{
+                color: 'gray',
+                width: '15px'
+              }} />
               {doctor.phone}
             </Typography>
           </CardContent>
