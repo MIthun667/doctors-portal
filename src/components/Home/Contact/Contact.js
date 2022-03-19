@@ -25,7 +25,7 @@ const contactBg = {
 export default function Contact() {
     const { user } = useAuth();
 
-    const initialInfo = {email: user.email, subject: '', message: '' }
+    const initialInfo = {email: user.email, text: '', messages: '' }
     const [ submit, setSubmit ] = React.useState(initialInfo);
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -63,8 +63,8 @@ export default function Contact() {
                <div className='d-flex flex-column bd-highlight mb-3 form'>
                     <input onBlur={handleOnBlur}  type="email" className="form-control email" id="exampleFormControlInput1" placeholder='Email Address' />
                     <input onBlur={handleOnBlur} type="text" className="form-control subject" id="exampleFormControlInput1" placeholder='Subject' />
-                    <textarea onBlur={handleOnBlur} className="form-control message" id="exampleFormControlTextarea1" placeholder='Your Messages'></textarea>
-                    <button type='submit' className="btn btn-outline-dark button">Submit</button>
+                    <textarea onBlur={handleOnBlur} type='messages' className="form-control message" id="exampleFormControlTextarea1" placeholder='Your Messages'></textarea>
+                    <button onClick={handleSubmit} type='submit' className="btn btn-outline-dark button">Submit</button>
                 </div>
                </form>
             </div>

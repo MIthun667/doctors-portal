@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import treatment from '../../../images/treatment.png'
-import { Button, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 export default function DentalInfo() {
   return (

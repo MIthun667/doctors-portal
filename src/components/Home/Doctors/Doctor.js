@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +10,7 @@ const Doctor = ({ doctor }) => {
 
 
   return (
+    <>
     <Container sx={{ my: 2 }}>
       <Grid item xs={4} sm={4} md={4} sx={{ display: 'flex' }}>
         <Card sx={{ minWidth: 375, border: 0, boxShadow: 0, textAlign: 'center' }}>
@@ -74,6 +75,7 @@ const Doctor = ({ doctor }) => {
         </Card>
       </Grid>
     </Container>
+    </>
   )
 }
 

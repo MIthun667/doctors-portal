@@ -1,5 +1,6 @@
 import {Container, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { useState } from 'react';
 import Booking from '../Booking/Booking';
 
 
@@ -42,6 +43,10 @@ const bookings = [
     }
 ]
 export default function AvailableAppoint({date}) {
+    const [count, setCount] = useState([0]);
+    const decNum = () =>{
+        setCount(count-1);
+    }
     
   return (
     <Container>
@@ -60,7 +65,7 @@ export default function AvailableAppoint({date}) {
               key={booking.id}
               booking={booking}
               date={date}
-              
+              decNum={decNum}
               ></Booking>)
           }
         </Grid>

@@ -20,7 +20,7 @@ const style = {
   p: 4,
 }
 
-export default function BookingModal({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) {
+export default function BookingModal({ openBooking, handleBookingClose, booking, date, decNum }) {
   const { name, time } = booking;
   const { user } = useAuth();
 
@@ -53,6 +53,7 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
       })
       .then(data => {
         if(data){
+          
         }
       });
 
@@ -115,7 +116,7 @@ export default function BookingModal({ openBooking, handleBookingClose, booking,
               defaultValue={date.toDateString()}
               size="small"
             />
-            <button type='submit' className='btn btn-outline-dark text-center'>Book Appointment</button>
+            <button type='submit' onClick={decNum} className='btn btn-outline-dark text-center'>Book Appointment</button>
           </form>
         </Box>
       </Fade>

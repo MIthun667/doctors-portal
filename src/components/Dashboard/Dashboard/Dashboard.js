@@ -129,8 +129,8 @@ function Dashboard(props) {
                                 setDate={setDate} />
                         </Grid>
                         <Grid item xs={12} md={7}>
-                            <Appoinments
-                                date={date} />
+                            <Appoinments 
+                            date={date}/>
                         </Grid>
                     </Grid>
                 </Typography>

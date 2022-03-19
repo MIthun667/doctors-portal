@@ -9,20 +9,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
 
 const Appoinments = ({ date }) => {
 
     const { user } = useAuth();
     const [appoinments, setAppoinments] = useState([]);
-
     useEffect(() => {
         const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`
-        fetch(url)
+        axios.get(url)
             .then(response => response.json())
             .then(data => setAppoinments(data));
-    }, [date])
-
-
+    }, [date]);
     return (
         <div>
             <h2>Appointments: {appoinments.length}</h2>
